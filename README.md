@@ -38,21 +38,42 @@ The dataset contains **1026 customer records** and **13 attributes**:
 
 ## 🧹 Data Cleaning and Transformation (`Working Sheet`)
 
-The `Working Sheet` contains the cleaned and enhanced dataset with **1000 rows** and **14 columns**, including the following transformations:
+The `Working Sheet` contains the cleaned and enhanced version of the original dataset with **1000 rows** and **14 columns**. The following operations were performed:
 
-### ✅ Categorical Normalization
-- `Marital Status`: M → Married, S → Single  
-- `Gender`: M → Male, F → Female  
-- Applied `PROPER()` and `TRIM()` functions for consistent text formatting
+### 🔄 Categorical Decoding and Standardization
 
-### 🧒 Age Binning
-Added a new column: **`Age-Brackets`** with the following categories:
-- `Adolescent` – younger individuals
-- `Middle Age` – between early adulthood and midlife
-- `Old` – senior individuals
+- **Marital Status**: Replaced codes with readable labels
+  - `M` → `Married`, `S` → `Single`
+- **Gender**: Replaced gender codes
+  - `M` → `Male`, `F` → `Female`
+- **Applied Consistent Casing** using Excel's `PROPER()` and `TRIM()` functions across:
+  - `Education`  
+  - `Occupation`  
+  - `Commute Distance`  
+  - `Region`  
 
-These were categorized to support demographic segmentation in analysis and dashboards.
+### 🧠 Additional Data Corrections
 
+- Removed any extra whitespace or inconsistent formatting in all categorical columns
+- Verified consistent capitalization in values like:
+  - Education: e.g., `Partial High School`, `Graduate Degree`
+  - Occupation: e.g., `Skilled Manual`, `Clerical`, `Management`
+  - Commute Distance: e.g., `0-1 Miles`, `More than 10 Miles`
+  - Region: Normalized to `Europe`, `Pacific`, `North America`
+
+### 🧒 Age Bracketing
+
+A new column **`Age-Brackets`** was derived using conditional logic:
+- `Adolescent`: Age < 36  
+- `Middle Age`: Age between 36 and 55  
+- `Old`: Age > 55  
+
+This binning facilitates demographic segmentation and enhances dashboard filtering.
+
+### 🔎 Consistency & Completeness
+
+- Confirmed that **all records are complete** (no missing values)
+- Ensured numeric columns (`Income`, `Children`, `Cars`, `Age`) are valid and within expected ranges
 ---
 
 ## 📊 Pivot Table Analysis (`Pivot Table` Sheet)
